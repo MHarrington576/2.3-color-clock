@@ -1,0 +1,40 @@
+$icon-font-path: "../bower_components/bootstrap-sass/assets/fonts/bootstrap/";
+@import "../bower_components/bootstrap-sass/assets/stylesheets/bootstrap";
+@import "https://fonts.googleapis.com/css?family=Permanent+Marker";
+
+* {
+    box-sizing: border-box;
+}
+
+body{
+  color: #FFFFFF;
+  font-family: 'Permanent Marker', cursive;
+  text-align: center;
+}
+
+h1{
+  text-align: center;
+  font-weight: bold;
+}
+
+.current-time{
+  font-size: 10vw;
+
+  .hours::after, .minutes::after{
+    content: ":";
+    padding-left: 42px;
+  }
+}
+
+.le-progress-bar{
+  position: relative;
+  width: 100%;
+  background-color: #FFFFFF;
+}
+
+#myBar{
+  position: absolute;
+  width: 10%;
+  height: 100%;
+  background-color: #15ECAE;
+}
