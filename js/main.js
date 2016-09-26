@@ -8,6 +8,10 @@
   var awaitingHover = document.getElementById('awaiting-hover');
   var hoverVar = false;
 
+  var progressBar = document.getElementById('original-progress-bar');
+  var currentTime = new Date();
+  var secondCount = currentTime.getSeconds();
+
   function displayTime(){
     var currentTime = new Date();
     var hrCount = currentTime.getHours();
@@ -26,9 +30,9 @@
     var hrCount = currentTime.getHours();
     var minCount = currentTime.getMinutes();
     var secCount = currentTime.getSeconds();
-    hours.textContent = ("0" + hrCount.toString(16)).slice(-2);
-    minutes.textContent = ("0" + minCount.toString(16)).slice(-2);
-    seconds.textContent = ("0" + secCount.toString(16)).slice(-2);
+    hours.textContent = ("0" + (hrCount/13).toString(16)).slice(-2);
+    minutes.textContent = ("0" + (minCount/13).toString(16)).slice(-2);
+    seconds.textContent = ("0" + (secCount/13).toString(16)).slice(-2);
   }
 
   awaitingHover.addEventListener('mouseenter', function(){hoverVar = true});
@@ -39,29 +43,30 @@
     var hrCount = currentTime.getHours();
     var minCount = currentTime.getMinutes();
     var secCount = currentTime.getSeconds();
-    var backgroundColorVar = "#" + ("0" + hrCount.toString(8)).slice(-2) + ("0" + minCount.toString(8)).slice(-2) + ("0" + hrCount.toString(8)).slice(-2);
+    var currentRed = ("0" + (hrCount/13).toString(16)).slice(-2)
+    var currentGreen = ("0" + (minCount/13).toString(16)).slice(-2)
+    var currentBlue = ("0" + (secCount/13).toString(16)).slice(-2);
+    var colorCode = '#' + currentRed + currentGreen + currentBlue;
 
     if(hoverVar==true){
       displayHexCode();
-      document.body.style.backgroundColor = backgroundColorVar;
+      document.body.style.backgroundColor = colorCode;
     }
     else{
       displayTime();
-      document.body.style.backgroundColor = backgroundColorVar;
+      document.body.style.backgroundColor = colorCode;
     };
   }
 
   window.setInterval(checkHover, 100);
 
-  function barFunction(){
-    var n = new Date();
-    var t = (n.getSeconds()/60*100).toFixed();
-    document.getElementById('progress-bar-itself').style.width = t + '%';
+  function minuteProgress(){
+    currentTime = new Date();
+    secondCount = currentTime.getSeconds();
+    progressBar.style.width=(secondCount / 60 * 100) + '%';
   }
 
-  var minuteBar = barFunction;
-
-  barFunction();
-  window.setInterval(minuteBar, 1000);
+  // minuteProgress();
+  window.setInterval(minuteProgress, 100);
 
 }());

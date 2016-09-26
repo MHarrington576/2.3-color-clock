@@ -5816,8 +5816,8 @@ body {
   text-align: center; }
 
 h1 {
-  text-align: center;
-  font-weight: bold; }
+  margin-top: 5%;
+  text-align: center; }
 
 .current-time {
   font-size: 10vw; }
@@ -5825,15 +5825,9 @@ h1 {
     content: ":";
     padding-left: 42px; }
 
-.le-progress-bar {
-  position: relative;
-  width: 100%;
-  background-color: #FFFFFF; }
-
-#myBar {
-  position: absolute;
-  width: 10%;
-  height: 100%;
-  background-color: #15ECAE; }
+hr {
+  background-color: #FFFFFF;
+  height: 12px;
+  transition: width 1s linear; }
 
 /*# sourceMappingURL=styles.css.map */
